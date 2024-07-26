@@ -1,0 +1,9 @@
+{
+	"name": "wangbilldfai1",
+	"location": "westus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2373f023-5e23-4aa9-be09-6bced97b079d",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+	}
+}
