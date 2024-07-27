@@ -1,0 +1,20 @@
+{
+	"name": "GitHub Projects Data",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "All projects and its related items in sprint planning",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://api.github.com/graphql",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous",
+			"authHeaders": {
+				"Authorization": {
+					"type": "SecureString",
+					"value": "**********"
+				}
+			}
+		}
+	}
+}
