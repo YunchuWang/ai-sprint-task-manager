@@ -1,5 +1,5 @@
 {
-	"name": "RestResource1",
+	"name": "GitHubProjectData",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "GitHub Projects Data",
