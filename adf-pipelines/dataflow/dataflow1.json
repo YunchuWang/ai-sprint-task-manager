@@ -19,8 +19,9 @@
 				"     validateSchema: false,",
 				"     httpMethod: 'POST',",
 				"     body: '{",
-				"  \"query\": \"query { user(login: \\\"YunchuWang\\\") { projectsV2(first: 20) { nodes { id __typename title items(first: 20) { nodes { __typename id content { ...on Issue { __typename title repository { id name description } state publishedAt projectsV2(first: 1) { nodes { id title number } } labels(first: 10) { nodes { id name } } milestone { id title } assignees(first: 10) { nodes { login } } } } } } } } } }\"",
-				"}',",
+				"  \"query\": \"query { user(login: \\\"YunchuWang\\\") { projectsV2(first: 20) { nodes { id __typename title items(first: 20) { nodes { __typename id content { ... on Issue { __typename title repository { id name description } state publishedAt projectsV2(first: 1) { nodes { id title number } } labels(first: 10) { nodes { id name } } milestone { id title } assignees(first: 10) { nodes { login } } } } } } } } } } }\"",
+				"}",
+				"',",
 				"     timeout: 30) ~> "
 			]
 		}
