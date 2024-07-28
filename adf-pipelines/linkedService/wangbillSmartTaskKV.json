@@ -1,0 +1,10 @@
+{
+	"name": "wangbillSmartTaskKV",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://billvault.vault.azure.net/"
+		}
+	}
+}
