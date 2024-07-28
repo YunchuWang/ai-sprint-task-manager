@@ -57,7 +57,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "GitHubIssueItems",
+						"referenceName": "GitHubProjectDataBlob",
 						"type": "DatasetReference"
 					}
 				]

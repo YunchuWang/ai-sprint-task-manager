@@ -1,5 +1,5 @@
 {
-	"name": "GitHubIssueItems",
+	"name": "GitHubProjectDataBlob",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "githubissuesitems_raw.json",
-				"folderPath": "githubissues",
+				"fileName": "githubprojectdata.json",
+				"folderPath": "githubprojectdata",
 				"fileSystem": "wangbillsmartai"
 			}
 		},
