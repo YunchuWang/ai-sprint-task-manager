@@ -1,0 +1,12 @@
+{
+	"name": "GitHubIssueSearchService",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSearch",
+		"typeProperties": {
+			"url": "https://wangbill-ai-search-test1.search.windows.net",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEFGRkRDMEY2LTlFRkItNEJGQS05Q0Q0LUZCMTc3MzhCMjYyQV9mOTU4NWM2YS0zYTNkLTQxOWQtOGFhZi0wMWEzYjU1NTM3N2EiDQp9"
+		}
+	}
+}
