@@ -12,10 +12,21 @@
 					"name": "GitProjectDataBlob"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "GitHubIssueDataBlob",
+						"type": "DatasetReference"
+					},
+					"name": "GitIssueDataBlob"
+				}
+			],
 			"transformations": [
 				{
 					"name": "Flatten"
+				},
+				{
+					"name": "gitIssueDataFinal"
 				}
 			],
 			"scriptLines": [
@@ -39,12 +50,22 @@
 				"          state = data.user.projectsV2.nodes.items.nodes.content.state,",
 				"          repository_name = data.user.projectsV2.nodes.items.nodes.content.repository.name,",
 				"          id = data.user.projectsV2.nodes.items.nodes.content.repository.id,",
-				"          labels = data.user.projectsV2.nodes.items.nodes.content.labels,",
+				"          labels = data.user.projectsV2.nodes.items.nodes.content.labels.nodes,",
 				"          milestone = data.user.projectsV2.nodes.items.nodes.content.milestone.title,",
-				"          assignees = data.user.projectsV2.nodes.items.nodes.content.assignees",
+				"          assignees = data.user.projectsV2.nodes.items.nodes.content.assignees.nodes",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> Flatten"
+				"     skipDuplicateMapOutputs: true) ~> Flatten",
+				"Flatten derive(labels = map(labels, #item.name),",
+				"          assignees = map(assignees, #item.login)\r",
+				") ~> gitIssueDataFinal",
+				"gitIssueDataFinal sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> GitIssueDataBlob"
 			]
 		}
 	}
