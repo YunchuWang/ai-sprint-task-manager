@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "GitHubIssueDataBlob",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -39,6 +43,9 @@
 				"     skipDuplicateMapOutputs: false) ~> Flatten",
 				"Flatten sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
