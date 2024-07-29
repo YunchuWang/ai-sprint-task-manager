@@ -1,0 +1,12 @@
+{
+	"name": "GitHubProjectDataRaw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GitHub Projects Data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}

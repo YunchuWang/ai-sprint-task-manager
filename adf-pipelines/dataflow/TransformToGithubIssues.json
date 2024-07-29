@@ -1,0 +1,54 @@
+{
+	"name": "TransformToGithubIssues",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "GitHubProjectDataBlob",
+						"type": "DatasetReference"
+					},
+					"name": "GitProjectDataBlob"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "GitHubIssueDataBlob",
+						"type": "DatasetReference"
+					},
+					"name": "GitHubIssueDataBlob"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Flatten"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          data as (user as (projectsV2 as (nodes as ({__typename} as string, id as string, title as string, items as (nodes as ({__typename} as string, content as ({__typename} as string, assignees as (nodes as (login as string)[]), labels as (nodes as (id as string, name as string)[]), milestone as (id as string, title as string), projectsV2 as (nodes as (id as string, number as string, title as string)[]), publishedAt as string, repository as (description as string[], id as string, name as string), state as string, title as string), id as string)[]))[])))",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     enableCdc: true,",
+				"     mode: 'read',",
+				"     skipInitialLoad: false,",
+				"     documentForm: 'arrayOfDocuments') ~> GitProjectDataBlob",
+				"GitProjectDataBlob foldDown(unroll(),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> Flatten",
+				"Flatten sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> GitHubIssueDataBlob"
+			]
+		}
+	}
+}

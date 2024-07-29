@@ -1,0 +1,117 @@
+{
+	"name": "GithubDataTransformPipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyGithubProjectData",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "GetGitHubToken",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "POST",
+						"requestBody": "{\n\"query\": \"query { user(login: \\\"YunchuWang\\\") { projectsV2(first: 20) { nodes { id __typename title items(first: 20) { nodes { __typename id content { ...on Issue { __typename title repository { id name description } state publishedAt projectsV2(first: 1) { nodes { id title number } } labels(first: 10) { nodes { id name } } milestone { id title } assignees(first: 10) { nodes { login } } } } } } } } } }\"}",
+						"additionalHeaders": {
+							"Authorization": {
+								"value": "@activity('GetGitHubToken').output.value",
+								"type": "Expression"
+							}
+						},
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "GitHubProjectDataRaw",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "GitHubProjectDataBlob",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "GetGitHubToken",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://billvault.vault.azure.net/secrets/GitHubToken/63857cfd9b4d448688c2767778b15230?api-version=7.0",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "FormatJsonFile",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [
+					{
+						"activity": "CopyGithubProjectData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "HttpTrigger",
+					"method": "GET"
+				},
+				"linkedServiceName": {
+					"referenceName": "FormatJsonFile",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
