@@ -14,10 +14,6 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "GitHubProjectDataRaw",
-						"type": "DatasetReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -43,17 +39,6 @@
 				"     skipDuplicateMapOutputs: false) ~> Flatten",
 				"Flatten sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     deletable:true,",
-				"     insertable:true,",
-				"     updateable:true,",
-				"     upsertable:true,",
-				"     insertHttpMethod: 'POST',",
-				"     deleteHttpMethod: 'DELETE',",
-				"     upsertHttpMethod: 'PUT',",
-				"     updateHttpMethod: 'PATCH',",
-				"     timeout: 30,",
-				"     requestInterval: 0,",
-				"     requestFormat: ['type' -> 'json'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
