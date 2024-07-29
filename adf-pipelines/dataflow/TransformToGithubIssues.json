@@ -12,15 +12,7 @@
 					"name": "GitProjectDataBlob"
 				}
 			],
-			"sinks": [
-				{
-					"dataset": {
-						"referenceName": "GitHubIssueDataBlob",
-						"type": "DatasetReference"
-					},
-					"name": "GitHubIssueDataBlob"
-				}
-			],
+			"sinks": [],
 			"transformations": [
 				{
 					"name": "Flatten"
@@ -37,17 +29,22 @@
 				"     enableCdc: true,",
 				"     mode: 'read',",
 				"     skipInitialLoad: false,",
-				"     documentForm: 'arrayOfDocuments') ~> GitProjectDataBlob",
-				"GitProjectDataBlob foldDown(unroll(),",
-				"     skipDuplicateMapInputs: false,",
-				"     skipDuplicateMapOutputs: false) ~> Flatten",
-				"Flatten sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
+				"     documentForm: 'singleDocument') ~> GitProjectDataBlob",
+				"GitProjectDataBlob foldDown(unroll(data.user.projectsV2.nodes.items.nodes),",
+				"     mapColumn(",
+				"          id = data.user.projectsV2.nodes.items.nodes.id,",
+				"          title = data.user.projectsV2.nodes.items.nodes.content.title,",
+				"          project_id = data.user.projectsV2.nodes.id,",
+				"          project_title = data.user.projectsV2.nodes.title,",
+				"          state = data.user.projectsV2.nodes.items.nodes.content.state,",
+				"          repository_name = data.user.projectsV2.nodes.items.nodes.content.repository.name,",
+				"          id = data.user.projectsV2.nodes.items.nodes.content.repository.id,",
+				"          labels = data.user.projectsV2.nodes.items.nodes.content.labels,",
+				"          milestone = data.user.projectsV2.nodes.items.nodes.content.milestone.title,",
+				"          assignees = data.user.projectsV2.nodes.items.nodes.content.assignees",
+				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> GitHubIssueDataBlob"
+				"     skipDuplicateMapOutputs: true) ~> Flatten"
 			]
 		}
 	}
