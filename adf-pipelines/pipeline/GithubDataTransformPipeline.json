@@ -97,6 +97,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"functionName": "Authorization"
+				},
+				"linkedServiceName": {
+					"referenceName": "FormatJsonFile",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
