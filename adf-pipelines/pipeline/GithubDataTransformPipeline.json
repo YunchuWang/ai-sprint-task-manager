@@ -84,9 +84,16 @@
 				}
 			},
 			{
-				"name": "Azure Function1",
+				"name": "FormatJsonFile",
 				"type": "AzureFunctionActivity",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "CopyGithubProjectData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -96,7 +103,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "Authorization"
+					"functionName": "HttpTrigger",
+					"method": "GET"
 				},
 				"linkedServiceName": {
 					"referenceName": "FormatJsonFile",
