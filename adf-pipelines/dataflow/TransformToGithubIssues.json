@@ -27,6 +27,9 @@
 				},
 				{
 					"name": "gitIssueDataFinal"
+				},
+				{
+					"name": "filter1"
 				}
 			],
 			"scriptLines": [
@@ -57,7 +60,8 @@
 				"Flatten derive(labels = map(labels, #item.name),",
 				"          assignees = map(assignees, #item.login)\r",
 				") ~> gitIssueDataFinal",
-				"gitIssueDataFinal sink(allowSchemaDrift: true,",
+				"gitIssueDataFinal filter(!isNull(id)) ~> filter1",
+				"filter1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     truncate: true,",
 				"     umask: 0022,",
