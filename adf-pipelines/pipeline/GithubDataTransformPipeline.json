@@ -9,7 +9,7 @@
 					{
 						"activity": "GetGitHubToken",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -118,7 +118,7 @@
 					{
 						"activity": "FormatJsonFile",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -140,6 +140,64 @@
 						"computeType": "General"
 					},
 					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "UpdateSearchIndex",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "GetSearchKey",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"api-key": {
+							"value": "@activity('GetSearchKey').output.value",
+							"type": "Expression"
+						}
+					},
+					"url": "https://wangbill-ai-search-test1.search.windows.net/indexers/smartaiindexer/run?api-version=2023-11-01"
+				}
+			},
+			{
+				"name": "GetSearchKey",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "TransformToGithubIssues",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://billvault.vault.azure.net/secrets/SearchKey/9eb21dc648d44e76abbce2879298777c?api-version=7.0",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
 				}
 			}
 		],
