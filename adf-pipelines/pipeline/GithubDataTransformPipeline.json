@@ -94,7 +94,10 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "Authorization"
+				}
 			}
 		],
 		"annotations": []
