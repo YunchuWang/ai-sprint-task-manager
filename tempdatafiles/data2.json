@@ -1,0 +1,80 @@
+[
+  {
+    "id": "PVTI_lAHOAL34Lc4AlVDgzgRQtcI",
+    "title": "add unit tests",
+    "project_id": "PVT_kwHOAL34Lc4AlVDg",
+    "project_title": "ai test planning project",
+    "state": "OPEN",
+    "repository_name": "ai-sprint-task-manager",
+    "repository_id": "R_kgDOMbKVow",
+    "labels": ["testing"],
+    "milestone": "OpenAI extension testing",
+    "assignees": ["YunchuWang"],
+    "publishedAt": "2024-07-26T18:42:06Z"
+  },
+  {
+    "id": "PVTI_lAHOAL34Lc4AlVDgzgRQ7Ik",
+    "title": "Optimize ai response handling",
+    "project_id": "PVT_kwHOAL34Lc4AlVDg",
+    "project_title": "ai test planning project",
+    "state": "OPEN",
+    "repository_name": "ai-sprint-task-manager",
+    "repository_id": "R_kgDOMbKVow",
+    "labels": ["enhancement"],
+    "milestone": "OpenAi Extension - Function Calling Support",
+    "assignees": ["YunchuWang"],
+    "publishedAt": "2024-07-26T21:46:46Z"
+  },
+  {
+    "id": "PVTI_lAHOAL34Lc4AlVDgzgRQ7Lk",
+    "title": "Fix api 400 bug",
+    "project_id": "PVT_kwHOAL34Lc4AlVDg",
+    "project_title": "ai test planning project",
+    "state": "OPEN",
+    "repository_name": "ai-sprint-task-manager",
+    "repository_id": "R_kgDOMbKVow",
+    "labels": ["bug"],
+    "milestone": "OpenAI extension testing",
+    "assignees": ["YunchuWang"],
+    "publishedAt": "2024-07-26T21:47:48Z"
+  },
+  {
+    "id": "PVTI_lAHOAL34Lc4AlVDgzgRQ7Qg",
+    "title": "Improve documentation",
+    "project_id": "PVT_kwHOAL34Lc4AlVDg",
+    "project_title": "ai test planning project",
+    "state": "OPEN",
+    "repository_name": "ai-sprint-task-manager",
+    "repository_id": "R_kgDOMbKVow",
+    "labels": ["documentation"],
+    "milestone": "OpenAi extension - Code Interpreter Support",
+    "assignees": ["YunchuWang"],
+    "publishedAt": "2024-07-26T21:48:44Z"
+  },
+  {
+    "id": "PVTI_lAHOAL34Lc4AlVDgzgRQ7Vs",
+    "title": "Design for rust language",
+    "project_id": "PVT_kwHOAL34Lc4AlVDg",
+    "project_title": "ai test planning project",
+    "state": "OPEN",
+    "repository_name": "ai-sprint-task-manager",
+    "repository_id": "R_kgDOMbKVow",
+    "labels": ["enhancement"],
+    "milestone": "OpenAi extension - Code Interpreter Support",
+    "assignees": ["YunchuWang"],
+    "publishedAt": "2024-07-26T21:49:23Z"
+  },
+  {
+    "id": "PVTI_lAHOAL34Lc4AlVDgzgRQ7dQ",
+    "title": "Interview with beta users",
+    "project_id": "PVT_kwHOAL34Lc4AlVDg",
+    "project_title": "ai test planning project",
+    "state": "OPEN",
+    "repository_name": "ai-sprint-task-manager",
+    "repository_id": "R_kgDOMbKVow",
+    "labels": ["pm"],
+    "milestone": "OpenAI extension testing",
+    "assignees": ["YunchuWang"],
+    "publishedAt": "2024-07-26T21:50:59Z"
+  }
+]

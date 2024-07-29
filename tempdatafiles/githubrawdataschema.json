@@ -1,0 +1,62 @@
+{
+    "data": {
+        "user": {
+            "projectsV2": {
+                "nodes": [
+                    {
+                        "__typename": "string",
+                        "id": "string",
+                        "title": "string",
+                        "items": {
+                            "nodes": [
+                                {
+                                    "__typename": "string",
+                                    "content": {
+                                        "__typename": "string",
+                                        "assignees": {
+                                            "nodes": [
+                                                {
+                                                    "login": "string"
+                                                }
+                                            ]
+                                        },
+                                        "labels": {
+                                            "nodes": [
+                                                {
+                                                    "id": "string",
+                                                    "name": "string"
+                                                }
+                                            ]
+                                        },
+                                        "milestone": {
+                                            "id": "string",
+                                            "title": "string"
+                                        },
+                                        "projectsV2": {
+                                            "nodes": [
+                                                {
+                                                    "id": "string",
+                                                    "number": "integer",
+                                                    "title": "string"
+                                                }
+                                            ]
+                                        },
+                                        "publishedAt": "date-time",
+                                        "repository": {
+                                            "description": ["string", "null"],
+                                            "id": "string",
+                                            "name": "string"
+                                        },
+                                        "state": "string",
+                                        "title": "string"
+                                    },
+                                    "id": "string"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
