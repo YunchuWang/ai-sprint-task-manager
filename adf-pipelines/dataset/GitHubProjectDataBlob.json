@@ -10,11 +10,171 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "githubprojectdata.json",
+				"fileName": {
+					"value": "data.json",
+					"type": "Expression"
+				},
 				"folderPath": "githubprojectdata",
 				"fileSystem": "wangbillsmartai"
 			}
 		},
-		"schema": {}
+		"schema": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "object",
+					"properties": {
+						"user": {
+							"type": "object",
+							"properties": {
+								"projectsV2": {
+									"type": "object",
+									"properties": {
+										"nodes": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"__typename": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"title": {
+														"type": "string"
+													},
+													"items": {
+														"type": "object",
+														"properties": {
+															"nodes": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"__typename": {
+																			"type": "string"
+																		},
+																		"content": {
+																			"type": "object",
+																			"properties": {
+																				"__typename": {
+																					"type": "string"
+																				},
+																				"assignees": {
+																					"type": "object",
+																					"properties": {
+																						"nodes": {
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"login": {
+																										"type": "string"
+																									}
+																								}
+																							}
+																						}
+																					}
+																				},
+																				"labels": {
+																					"type": "object",
+																					"properties": {
+																						"nodes": {
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"id": {
+																										"type": "string"
+																									},
+																									"name": {
+																										"type": "string"
+																									}
+																								}
+																							}
+																						}
+																					}
+																				},
+																				"milestone": {
+																					"type": "object",
+																					"properties": {
+																						"id": {
+																							"type": "string"
+																						},
+																						"title": {
+																							"type": "string"
+																						}
+																					}
+																				},
+																				"projectsV2": {
+																					"type": "object",
+																					"properties": {
+																						"nodes": {
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"id": {
+																										"type": "string"
+																									},
+																									"number": {
+																										"type": "string"
+																									},
+																									"title": {
+																										"type": "string"
+																									}
+																								}
+																							}
+																						}
+																					}
+																				},
+																				"publishedAt": {
+																					"type": "string"
+																				},
+																				"repository": {
+																					"type": "object",
+																					"properties": {
+																						"description": {
+																							"type": "array",
+																							"items": {
+																								"type": "string"
+																							}
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"name": {
+																							"type": "string"
+																						}
+																					}
+																				},
+																				"state": {
+																					"type": "string"
+																				},
+																				"title": {
+																					"type": "string"
+																				}
+																			}
+																		},
+																		"id": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
