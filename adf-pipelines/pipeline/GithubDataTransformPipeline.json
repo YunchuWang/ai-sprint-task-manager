@@ -84,11 +84,6 @@
 				}
 			}
 		],
-		"variables": {
-			"token": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
